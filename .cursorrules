@@ -1,0 +1,122 @@
+{
+    "core": {
+        "version": "1.0.0",
+        "project_name": "wedding-memories",
+        "ai_behavior": {
+            "context_handling": {
+                "default_context": true,
+                "codebase_indexing": true,
+                "web_search": true,
+                "documentation_sync": true
+            },
+            "response_format": {
+                "use_markdown": true,
+                "include_file_paths": true,
+                "show_code_changes": true
+            }
+        },
+        "imports": {
+            "project_rules": "./rules/*.rules",
+            "documentation": "./docs/*.md"
+        }
+    },
+    "project_requirements": {
+        "project_requirements": {
+            "purpose": [
+                "Showcase wedding photos and videos",
+                "Share cherished moments with loved ones",
+                "Preserve memories for future generations",
+                "Maintain personal and intimate feel"
+            ],
+            "content_management": {
+                "photos": {
+                    "categories": [
+                        "Couple Moments: Intimate portraits",
+                        "First Dance & Celebrations",
+                        "Entrance & Ceremony",
+                        "Reception Highlights",
+                        "Group & Family Shots"
+                    ],
+                    "requirements": [
+                        "High-quality images only",
+                        "Descriptive captions",
+                        "Proper vendor credits",
+                        "Organized categories"
+                    ]
+                },
+                "features": [
+                    "Filterable gallery",
+                    "Lightbox viewing",
+                    "Video playback",
+                    "Guestbook functionality"
+                ]
+            }
+        },
+        "development_standards": {
+            "tech_stack": {
+                "frontend": [
+                    "Next.js 14+ with App Router",
+                    "React 18 features",
+                    "Tailwind CSS styling",
+                    "Modern image formats"
+                ],
+                "optimization": [
+                    "Lazy loading",
+                    "Image optimization",
+                    "Code splitting",
+                    "Performance metrics"
+                ]
+            }
+        }
+    },
+    "ai_rules": {
+        "code_generation": {
+            "style": {
+                "mobile_first": true,
+                "use_typescript": true,
+                "follow_dry": true
+            },
+            "documentation": {
+                "auto_update": true,
+                "phase_based": true,
+                "naming_convention": "[Topic]_docs.md"
+            },
+            "components": {
+                "default_type": "server",
+                "client_components": "only_when_necessary",
+                "structure": "atomic"
+            }
+        },
+        "error_handling": {
+            "preserve_functionality": true,
+            "backup_before_changes": true,
+            "isolated_fixes": true
+        },
+        "documentation_rules": {
+            "typedoc": {
+                "required_tags": ["@module", "@packageDocumentation", "@component", "@props"],
+                "include_examples": true
+            },
+            "comments": {
+                "format": "// [Purpose]: [Explanation]",
+                "require_logic_explanation": true
+            }
+        }
+    },
+    "cursor_specific": {
+        "chat": {
+            "default_model": "claude-3-sonnet-200k",
+            "include_context": true,
+            "web_search": true
+        },
+        "copilot_plus_plus": {
+            "enabled": true,
+            "suggestions": "unlimited"
+        },
+        "features": {
+            "long_context": true,
+            "codebase_indexing": true,
+            "ai_review": true
+        }
+    }
+}

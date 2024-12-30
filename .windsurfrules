@@ -1,0 +1,342 @@
+Everytime the user is generate a chat you will update the documentations on the last part to include the changes, added, remove, modify features.
+Always prioritize mobile-first design with fluid layouts and touch-optimized interactions.
+Use Next.js App Router structure with React Server Components by default.
+Implement responsive breakpoints: mobile (max-width: 640px), tablet (641px-1024px), desktop (1025px+).
+Follow strict documentation naming convention: [Topic]\_docs.md.
+Create AI-friendly project structure with clear component relationships and dependency tracking.
+Generate comprehensive JSDoc comments with @ai-context, @ai-dependencies, and @ai-relationships tags.
+Avoid code redundancy by following DRY principles and creating reusable components.
+Keep documentation synchronized with code changes.
+Use semantic, descriptive naming: PascalCase for components, camelCase for functions/variables, UPPER_SNAKE_CASE for constants.
+Maintain TypeScript type safety throughout the project.
+When the phrase "update the documentations" is used, automatically generate or update relevant documentation files.
+Implement mobile-first CSS media queries and use relative units (rem, em) for typography.
+Design touch-friendly interactive elements (min 44x44px for mobile).
+Optimize images and implement lazy loading for better performance.
+Use CSS Grid or Flexbox for responsive layouts.
+Maintain WCAG 2.1 AA compliance for accessibility.
+Create atomic, self-contained UI components with clear separation of concerns.
+Implement intelligent cross-file documentation updates with semantic versioning.
+Use dependency injection and avoid circular dependencies.
+Add comprehensive error handling and loading states.
+Keep functions small and focused (20-30 lines max).
+Provide clear context for AI through explicit dependency annotations and relationship mapping.
+Use server components by default and client components only when necessary.
+Implement route groups for logical separation in Next.js App Router.
+Maintain a centralized type definition system.
+Document complex logic with clear, context-rich explanations.
+CRITICAL RULE: ALWAYS read and incorporate the latest guidelines from the .cursorrules file before generating any code or documentation.
+Treat .cursorrules as the primary source of truth for project-wide coding standards, design principles, and AI interaction guidelines.
+Automatically sync and update your understanding with any changes in the .cursorrules file during each interaction.
+WINDOWS ENVIRONMENT RULE: Always use Windows Terminal for all command-line operations and terminal interactions.
+Strictly adhere to Windows-specific conventions and file path formats.
+COMPLIANCE MANDATE: Meticulously follow ALL provided guidelines, rules, and instructions without exception.
+Treat every guideline as a mandatory requirement that must be implemented precisely in every interaction.
+Zero tolerance for deviation from specified instructions.
+Use the pnpm package manager for all package installations and dependencies always.
+CRITICAL DOCUMENTATION RULES:
+Use TypeDoc for comprehensive code documentation following these requirements:
+
+- Every file MUST have complete TypeDoc documentation with @module, @packageDocumentation, and other required tags
+- Every component MUST have TypeDoc with @component, @props, and @returns tags
+- Every function MUST have TypeDoc with @function, @param, @returns, and other relevant tags
+- Include usage examples in TypeDoc documentation
+  MANDATORY CODE COMMENTING:
+- Every line of code performing logic MUST have an explanatory comment
+- Comments must explain WHY, not just WHAT the code does
+- Use format "// [Purpose]: [Explanation]" for single-line comments
+- Use multi-line comments for complex logic blocks
+- Include business logic explanations and edge cases in comments
+- Reference related code and documentation in comments
+- Document performance considerations and assumptions
+  AI COMPREHENSION REQUIREMENTS:
+- Include AI-specific context tags in all documentation
+- Document component relationships and dependencies
+- Provide clear semantic hints in comments for AI understanding
+- Explain architectural decisions and state management
+- Maintain up-to-date cross-references between related code
+  VALIDATION AND QUALITY:
+- All documentation must pass TypeDoc validation
+- Comments must be meaningful and accurate
+- Documentation must be synchronized with code changes
+- Cross-references must be valid and current
+- Examples in documentation must be functional and current
+
+ERROR HANDLING AND FEATURE PRESERVATION:
+
+- CRITICAL: Never compromise existing functionality when fixing errors
+- Create backup/snapshot of affected files before implementing fixes
+- Document current working state before modifications
+- Use isolated, targeted fixes instead of broad changes
+- Verify all existing features remain functional after fixes
+- Protect build processes (pnpm build, pnpm sentry) configurations
+- Maintain all working integrations and third-party services
+- Preserve existing documentation while updating for fixes
+- Run comprehensive tests before and after changes
+- Implement rollback capabilities for all changes
+
+BUILD AND DEPLOYMENT PROTECTION:
+
+- Preserve all working build configurations
+- Maintain existing environment variables
+- Keep functional deployment scripts intact
+- Protect CI/CD workflows
+- Preserve Sentry error tracking setup
+- Maintain performance monitoring systems
+- Keep error boundary configurations
+
+SAFE ERROR RESOLUTION WORKFLOW:
+
+1. Analyze error context thoroughly
+2. Map potential impact on existing features
+3. Create targeted fix strategy
+4. Document current working state
+5. Implement minimal required changes
+6. Verify all existing functionality
+7. Update documentation without removing content
+8. Validate build and deployment processes
+9. Confirm system stability
+10. Maintain rollback capability
+
+DESIGN SYSTEM AND THEME COMPLIANCE:
+
+- CRITICAL: All new app routes and components MUST follow design system guidelines
+- Use theme tokens exclusively for all styling properties
+- Follow theme-defined spacing, typography, and color systems
+- Implement responsive design using theme breakpoints
+- Maintain dark mode compatibility through theme system
+- Use theme-aware components and layouts
+- Follow component composition patterns from design system
+
+APP ROUTER REQUIREMENTS:
+
+- Use theme-compliant layout structures
+- Apply consistent page-level styling
+- Follow theme-defined container widths
+- Implement standard spacing patterns
+- Use theme typography settings
+- Apply theme-based color schemes
+
+COMPONENT CREATION RULES:
+
+- Extend theme-defined base components
+- Use theme color tokens exclusively
+- Apply theme typography scale
+- Follow spacing system guidelines
+- Implement theme-defined variants
+- Use theme-aware styled components
+- Document component variants
+
+THEME INTEGRATION:
+
+- Always wrap components with theme provider
+- Access theme values through proper hooks/utilities
+- Maintain theme token consistency
+- Follow theme override protocols
+- Document any theme customizations
+- Implement proper theme switching support
+
+UI CONSISTENCY:
+
+- Use theme-defined interaction states
+- Follow accessibility guidelines from theme
+- Implement standard animations and transitions
+- Maintain consistent component behavior
+- Use theme-defined focus and hover states
+
+VALIDATION REQUIREMENTS:
+
+- Test theme compliance in all components
+- Verify responsive behavior using theme breakpoints
+- Validate dark mode implementation
+- Check accessibility standards
+- Ensure proper theme token usage
+- Test theme switching functionality
+
+PHASE-BASED DOCUMENTATION RULES:
+
+- CRITICAL: All documentation MUST be organized by project phases (PHASE_1_docs.md, etc.)
+- Update existing phase documentation instead of creating new files
+- Group all related features, configurations, and troubleshooting in the same phase doc
+- Maintain clear section organization within each phase document
+- Use table of contents and navigation aids for easy reference
+
+DOCUMENTATION UPDATES:
+
+- Always update existing phase documentation
+- Never create separate feature documentation files
+- Add new sections within appropriate phase document
+- Keep related documentation together
+- Update table of contents when adding content
+- Include version history for all changes
+
+SECTION ORGANIZATION:
+
+- Each feature section must include:
+  1. Feature overview
+  2. Technical details
+  3. Configuration
+  4. Usage examples
+  5. Troubleshooting
+- Optional sections:
+  - Performance considerations
+  - Security notes
+  - Future improvements
+
+VERSION TRACKING:
+
+- Use format: ## [Feature Name] - [Date]
+- Include version number
+- Document change description
+- Note any breaking changes
+- Provide migration steps if needed
+
+CHANGE TRACKING AND PROJECT STRUCTURE:
+
+- CRITICAL: Maintain accurate documentation of all project changes and structure
+- Document purpose and functionality of each new file
+- Explain why new files are added and their relationships
+- Track modifications to existing files and their impact
+- Keep project structure diagram always up to date
+- Document file dependencies and relationships
+
+FILE MODIFICATION DOCUMENTATION:
+
+- For new files:
+  1. Document purpose and functionality
+  2. Explain reason for addition
+  3. List dependencies and relationships
+  4. Update project structure diagram
+- For modified files:
+  1. Track significant changes
+  2. Document impact on existing features
+  3. Update related documentation
+  4. Maintain change history
+- For deleted files:
+  1. Document reason for removal
+  2. Update affected documentation
+  3. Remove from project structure
+  4. Note impact on dependencies
+
+PROJECT STRUCTURE MAINTENANCE:
+
+- Keep directory tree documentation current
+- Update component dependency diagrams
+- Document file relationships accurately
+- Include recent changes in structure
+- Mark deprecated components
+- Maintain visual hierarchy in diagrams
+
+CHANGE LOGGING:
+
+- Record date and time of changes
+- Document type of modification
+- Explain purpose of changes
+- Note impact on existing features
+- Group changes by feature/component
+- Maintain chronological order
+- Link to related documentation
+- Include version information
+
+AI CONTEXT REQUIREMENTS:
+
+- Base all decisions on current project structure
+- Consider recent modifications in suggestions
+- Understand and track file relationships
+- Document AI decision-making context
+- Update structure documentation automatically
+- Generate and maintain relationship diagrams
+
+COMPREHENSIVE DOCUMENTATION UPDATE RULES:
+
+- When "update the documentations" is requested:
+  1. Review full conversation history for changes
+  2. Analyze current project structure completely
+  3. Compare with previous documentation state
+  4. Track all modifications since last update
+  5. Document current project status comprehensively
+
+INFORMATION GATHERING AND CHANGE TRACKING:
+
+- Information Sources:
+  1. Previous documentation versions
+  2. Full conversation history
+  3. Complete folder structure
+  4. Git history and changes
+  5. Issue trackers and error logs
+  6. Build and deployment logs
+- Track All Modifications:
+  1. Added files and features
+  2. Modified components and functions
+  3. Removed or deprecated code
+  4. Refactored implementations
+  5. Implementation status changes
+  6. Known errors and issues
+  7. Non-functional components
+  8. Changed feature requirements
+- Change Logging:
+  1. Record date and time of changes
+  2. Document type of modification
+  3. Explain purpose of changes
+  4. Note impact on existing features
+  5. Group changes by feature/component
+  6. Link to related documentation
+
+STATUS AND ERROR TRACKING:
+
+- Feature Status Categories:
+  1. Fully implemented features
+  2. Partially implemented features
+  3. Pending implementations
+  4. Known issues and limitations
+  5. Deprecated functionalities
+- For Each Feature Track:
+  - Current status
+  - Implementation progress
+  - Known limitations
+  - Planned improvements
+  - Impact on functionality
+  - Related components affected
+
+DOCUMENTATION PRESERVATION:
+
+- Core Principles:
+  1. Never remove existing documentation without verification
+  2. Only modify documentation for changed features
+  3. Add new features without altering existing docs
+  4. Preserve historical context and decisions
+- Feature Changes:
+  1. Verify actual code changes before updating docs
+  2. Document changes with clear reasoning
+  3. Keep previous implementation details
+  4. Add change notes instead of replacing
+- New Features:
+  1. Add documentation without modifying existing
+  2. Link to related existing features
+  3. Follow consistent structure
+  4. Preserve section organization
+- Feature Removals:
+  1. Verify complete removal from codebase
+  2. Check documentation dependencies
+  3. Confirm no impact on other docs
+  4. Archive if historically relevant
+
+PROJECT STRUCTURE MAINTENANCE:
+
+- Core Requirements:
+  1. Maintain accurate directory structure
+  2. Update only for actual filesystem changes
+  3. Document new files incrementally
+  4. Keep historical structure reference
+  5. Include all significant files
+  6. Track component relationships
+
+VALIDATION REQUIREMENTS:
+
+- Accuracy Checks:
+  1. All changes are documented
+  2. Current status is accurate
+  3. Structure diagrams are current
+  4. Feature statuses are correct
+  5. All errors are tracked
+  6. Relationships are validated

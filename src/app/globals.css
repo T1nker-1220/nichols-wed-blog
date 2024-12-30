@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-playfair), serif;
+}
+
+@layer base {
+  h1 {
+    font-family: var(--font-alex-brush), cursive;
+    font-size: 3.5rem;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-family: var(--font-great-vibes), cursive;
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-dancing), cursive;
+    font-weight: 400;
+  }
+}
+
+@layer utilities {
+  .font-save-date {
+    font-family: var(--font-dancing), cursive;
+  }
+
+  .font-names {
+    font-family: var(--font-alex-brush), cursive;
+  }
+
+  .font-titles {
+    font-family: var(--font-great-vibes), cursive;
+  }
+
+  .font-elegant {
+    font-family: var(--font-playfair), serif;
+  }
+
+  .font-reception {
+    font-family: var(--font-dancing), cursive;
+    font-size: 2rem;
+    font-weight: 400;
+  }
+
+  .font-guestbook {
+    font-family: var(--font-alex-brush), cursive;
+    font-size: 2.25rem;
+    font-weight: 400;
+  }
+
+  .text-heading-xl {
+    font-size: 4rem;
+    line-height: 1.2;
+  }
+
+  .text-heading-lg {
+    font-size: 3rem;
+    line-height: 1.2;
+  }
+
+  .text-heading-md {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+
+  .text-heading-sm {
+    font-size: 2rem;
+    line-height: 1.3;
+  }
+}
