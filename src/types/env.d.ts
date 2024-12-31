@@ -4,12 +4,14 @@
  * @ai-context Type safety for environment variables
  */
 
-declare namespace NodeJS {
-  interface ProcessEnv {
-    DATABASE_URL: string;
-    DIRECT_URL: string;
-    NEXT_PUBLIC_SUPABASE_URL: string;
-    NEXT_PUBLIC_SUPABASE_ANON_KEY: string;
-    NODE_ENV: 'development' | 'production' | 'test';
+declare global {
+  namespace NodeJS {
+    interface ProcessEnv {
+      NEXT_PUBLIC_APP_URL: string;
+      NODE_ENV: 'development' | 'production' | 'test';
+      VERCEL_ENV: 'production' | 'preview' | 'development';
+      VERCEL_URL: string;
+      VERCEL: string;
+    }
   }
 }
