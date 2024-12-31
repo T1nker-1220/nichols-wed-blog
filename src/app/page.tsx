@@ -38,11 +38,7 @@ export default function HomePage() {
           >
             <button
               onClick={() => {
-                const video = document.querySelector("video");
-                if (video) {
-                  video.play();
-                  video.requestFullscreen();
-                }
+                window.open('https://youtu.be/pPPupzsXoHM', '_blank');
               }}
               className="group relative overflow-hidden rounded-lg bg-gradient-to-r from-[#8B4513] via-[#A0522D] to-[#CD853F] px-8 py-3 text-white shadow-lg shadow-[#8B4513]/20 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
             >
