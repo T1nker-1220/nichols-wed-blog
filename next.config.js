@@ -7,7 +7,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "vercel.app",
+        hostname: "nicholsweddingmemories.vercel.app",
       },
       {
         protocol: "http",
@@ -25,12 +25,24 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
     scrollRestoration: true,
+    // Disable features that might cause recursion
+    turbotrace: {
+      contextDirectory: __dirname,
+      processCwd: __dirname,
+    },
   },
   typescript: {
     ignoreBuildErrors: true,
   },
   eslint: {
     ignoreDuringBuilds: true,
+  },
+  // Add webpack configuration to handle recursion
+  webpack: (config, { isServer }) => {
+    config.watchOptions = {
+      ignored: ["**/node_modules", "**/.git", "**/.next"],
+    };
+    return config;
   },
 };
 
