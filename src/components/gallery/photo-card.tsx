@@ -18,6 +18,9 @@ export function PhotoCard({
   onClick,
   priority = false,
 }: PhotoCardProps) {
+  // Ensure the src is a relative path for local images
+  const imageSrc = image.src.startsWith('http') ? image.src : image.src;
+
   return (
     <div
       className="group relative cursor-pointer overflow-hidden rounded-lg bg-white shadow-md transition-transform hover:scale-[1.02] active:scale-[0.98] touch-manipulation"
@@ -25,7 +28,7 @@ export function PhotoCard({
     >
       <div className="aspect-[4/3] w-full">
         <Image
-          src={image.src}
+          src={imageSrc}
           alt={image.alt}
           className="object-cover transition-transform duration-300 group-hover:scale-105"
           fill
@@ -38,14 +41,10 @@ export function PhotoCard({
       {(image.caption || image.credit) && (
         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-3 md:p-4">
           {image.caption && (
-            <p className="font-elegant text-base md:text-lg text-white line-clamp-2">
-              {image.caption}
-            </p>
+            <p className="text-sm text-white md:text-base">{image.caption}</p>
           )}
           {image.credit && (
-            <p className="mt-1 text-xs md:text-sm text-white/80 line-clamp-1">
-              {image.credit}
-            </p>
+            <p className="mt-1 text-xs text-white/80">{image.credit}</p>
           )}
         </div>
       )}

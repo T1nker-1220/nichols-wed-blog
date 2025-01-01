@@ -3,13 +3,26 @@
  * @description Image utilities for handling local images in the public directory
  */
 
+const BASE_URL = process.env.NEXT_PUBLIC_VERCEL_URL 
+  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` 
+  : 'http://localhost:3000';
+
 /**
  * Get the public URL for an image in the public directory
  * @param {string} imagePath - The path to the image relative to the public/images directory
  * @returns {string} The public URL for the image
  */
 export function getImageUrl(imagePath: string): string {
-  return `/images/${imagePath}`;
+  // Remove leading slash if present
+  const cleanPath = imagePath.startsWith('/') ? imagePath.slice(1) : imagePath;
+  
+  // In development, use relative path
+  if (process.env.NODE_ENV === 'development') {
+    return `/${cleanPath}`;
+  }
+  
+  // In production, use absolute URL
+  return `${BASE_URL}/${cleanPath}`;
 }
 
 /**

@@ -20,7 +20,7 @@ should be specific and complete. Think through the problem step-by-step.
 
 YOU MUST:
 
--
+- When 
 - Use the pnpm package manager
 - always run the terminal as a windows user not linux or MacOS.
 - Follow the User's intent PRECISELY
