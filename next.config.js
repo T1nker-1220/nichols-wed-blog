@@ -7,10 +7,14 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**',
+        hostname: 'vercel.app',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
       }
     ],
-    unoptimized: true,
+    unoptimized: false,
     minimumCacheTTL: 60,
   },
   experimental: {

@@ -5,7 +5,7 @@
 
 const BASE_URL = process.env.NEXT_PUBLIC_VERCEL_URL 
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` 
-  : 'http://localhost:3000';
+  : process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
 /**
  * Get the public URL for an image in the public directory
@@ -16,13 +16,8 @@ export function getImageUrl(imagePath: string): string {
   // Remove leading slash if present
   const cleanPath = imagePath.startsWith('/') ? imagePath.slice(1) : imagePath;
   
-  // In development, use relative path
-  if (process.env.NODE_ENV === 'development') {
-    return `/${cleanPath}`;
-  }
-  
-  // In production, use absolute URL
-  return `${BASE_URL}/${cleanPath}`;
+  // Always use relative paths as Next.js handles them correctly in both dev and prod
+  return `/${cleanPath}`;
 }
 
 /**
