@@ -9,6 +9,8 @@ const nextConfig = {
         hostname: '**',
       },
     ],
+    unoptimized: true,
+    domains: ['localhost', 'nicholsweddingmemories.vercel.app'],
   },
   experimental: {
     optimizeCss: true,
