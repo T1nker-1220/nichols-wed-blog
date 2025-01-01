@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "prisma generate && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "optimize-images": "node src/scripts/optimize-images.js"
   },
   "dependencies": {
     "@prisma/client": "^6.1.0",
@@ -20,6 +21,7 @@
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
+    "sharp": "^0.33.5",
     "tailwind-merge": "^2.1.0",
     "zod": "^3.24.1"
   },
