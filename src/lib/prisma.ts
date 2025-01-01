@@ -13,24 +13,38 @@ declare global {
 
 // [Purpose]: Initialize PrismaClient with error logging
 const prismaClientSingleton = () => {
-  return new PrismaClient({
-    log: ['error', 'warn'],
-    errorFormat: 'pretty',
-  });
+  try {
+    return new PrismaClient({
+      log: ["error", "warn"],
+      errorFormat: "pretty",
+    });
+  } catch (error) {
+    console.error("Failed to initialize Prisma Client:", error);
+    throw error;
+  }
 };
 
 // [Purpose]: Create a global prisma instance or reuse existing one
-export const prisma = globalThis.prisma ?? prismaClientSingleton();
+const prismaInstance = globalThis.prisma ?? prismaClientSingleton();
 
-if (process.env.NODE_ENV !== 'production') {
-  globalThis.prisma = prisma;
+// [Purpose]: Ensure we're not recreating the client in development
+if (process.env.NODE_ENV !== "production") {
+  globalThis.prisma = prismaInstance;
 }
 
-// [Purpose]: Handle connection errors
-prisma.$connect()
-  .then(() => {
-    console.log('Successfully connected to database');
-  })
-  .catch((error) => {
-    console.error('Failed to connect to database:', error);
-  });
+// [Purpose]: Handle connection errors and retry logic
+const initializePrisma = async () => {
+  try {
+    await prismaInstance.$connect();
+    console.log("Successfully connected to database");
+  } catch (error) {
+    console.error("Failed to connect to database:", error);
+    // Retry connection after 5 seconds
+    setTimeout(initializePrisma, 5000);
+  }
+};
+
+// Initialize connection
+initializePrisma();
+
+export const prisma = prismaInstance;

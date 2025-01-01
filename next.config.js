@@ -23,13 +23,8 @@ const nextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   experimental: {
-    optimizeCss: true,
-    scrollRestoration: true,
-    // Disable features that might cause recursion
-    turbotrace: {
-      contextDirectory: __dirname,
-      processCwd: __dirname,
-    },
+    optimizeCss: false,
+    scrollRestoration: false,
   },
   typescript: {
     ignoreBuildErrors: true,
@@ -37,13 +32,8 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  // Add webpack configuration to handle recursion
-  webpack: (config, { isServer }) => {
-    config.watchOptions = {
-      ignored: ["**/node_modules", "**/.git", "**/.next"],
-    };
-    return config;
-  },
+  poweredByHeader: false,
+  reactStrictMode: true,
 };
 
 module.exports = nextConfig;

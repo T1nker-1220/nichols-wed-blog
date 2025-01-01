@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "prisma generate && next dev",
     "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
@@ -18,10 +18,11 @@
     "critters": "^0.0.20",
     "framer-motion": "^10.18.0",
     "lucide-react": "^0.309.0",
-    "next": "14.0.4",
-    "react": "^18",
-    "react-dom": "^18",
+    "next": "13.5.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "sharp": "^0.33.5",
+    "styled-jsx": "^5.1.6",
     "tailwind-merge": "^2.1.0",
     "zod": "^3.24.1"
   },
