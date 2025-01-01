@@ -1,7 +1,7 @@
 // @ts-check
 
 /** @type {import('next').NextConfig} */
-const config = {
+const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
@@ -10,7 +10,7 @@ const config = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**.vercel.app',
+        hostname: '**',
       },
     ],
   },
@@ -25,6 +25,12 @@ const config = {
   poweredByHeader: false,
   compress: true,
   reactStrictMode: true,
-};
+  typescript: {
+    ignoreBuildErrors: false,
+  },
+  eslint: {
+    ignoreDuringBuilds: false,
+  },
+}
 
-export default config;
+module.exports = nextConfig

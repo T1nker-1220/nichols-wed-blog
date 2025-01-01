@@ -15,4 +15,4 @@ model GuestbookEntry {
   email     String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-} 
+}
