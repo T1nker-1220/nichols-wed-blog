@@ -1,8 +1,20 @@
 {
   "version": 2,
   "framework": "nextjs",
-  "regions": ["sin1"],
   "buildCommand": "prisma generate && pnpm build",
   "installCommand": "pnpm install",
-  "devCommand": "pnpm dev"
+  "devCommand": "pnpm dev",
+  "regions": ["sin1"],
+  "public": true,
+  "headers": [
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
 }
