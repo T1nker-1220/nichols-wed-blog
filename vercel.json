@@ -8,7 +8,11 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/next"
+      "use": "@vercel/next",
+      "config": {
+        "installCommand": "pnpm install",
+        "buildCommand": "prisma generate && pnpm build"
+      }
     }
   ]
 }
