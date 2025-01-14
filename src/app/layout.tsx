@@ -1,7 +1,7 @@
+import { PerformanceWrapper } from "@/components/layout/performance-wrapper";
 import { Footer } from "@/components/ui/footer";
 import { Navigation } from "@/components/ui/navigation";
-import { PerformanceWrapper } from "@/components/layout/performance-wrapper";
-import { Metadata, Viewport } from "next";
+import { Metadata } from "next";
 import {
   Alex_Brush,
   Dancing_Script,
@@ -43,22 +43,46 @@ const greatVibes = Great_Vibes({
 });
 
 export const metadata: Metadata = {
-  title: "Wedding Memories | Jamaica & Morgan",
+  title: "Our Love Story | Jamaica & Morgan",
   description: "Celebrating the love story and wedding memories of Jamaica and Morgan.",
-  metadataBase: new URL('https://your-domain.com'),
+  metadataBase: new URL('https://nicholsweddingmemories.vercel.app/'),
   openGraph: {
-    title: "Wedding Memories | Jamaica & Morgan",
+    title: "Our Love Story | Jamaica & Morgan",
     description: "Celebrating the love story and wedding memories of Jamaica and Morgan.",
     type: 'website',
+    images: [
+      {
+        url: '/images/logo.webp',
+        width: 32,
+        height: 32,
+        alt: 'Nichols Wedding Logo'
+      }
+    ],
   },
-};
-
-export const viewport: Viewport = {
+  icons: {
+    icon: [
+      {
+        url: '/images/logo.webp',
+        sizes: '32x32',
+        type: 'image/webp'
+      }
+    ],
+    shortcut: '/images/logo.webp',
+    apple: [
+      {
+        url: '/images/logo.webp',
+        sizes: '180x180',
+        type: 'image/webp'
+      }
+    ],
+  },
   themeColor: '#ffffff',
-  width: 'device-width',
-  initialScale: 1,
-  maximumScale: 5,
-  userScalable: true,
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  },
 };
 
 export default function RootLayout({
@@ -67,10 +91,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html 
+    <html
       lang="en"
       className={`${playfair.variable} ${alexBrush.variable} ${dancingScript.variable} ${greatVibes.variable}`}
     >
+      <head>
+        <link rel="shortcut icon" type="image/webp" href="/images/logo.webp" />
+        <link rel="icon" type="image/webp" href="/images/logo.webp" sizes="32x32" />
+        <link rel="apple-touch-icon" href="/images/logo.webp" sizes="180x180" />
+      </head>
       <body className="flex min-h-screen flex-col bg-white font-serif antialiased">
         <PerformanceWrapper>
           {/* Texture overlay using CSS module */}
