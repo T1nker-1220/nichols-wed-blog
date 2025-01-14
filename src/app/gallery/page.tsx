@@ -2,7 +2,7 @@ import { GalleryGrid } from "@/components/gallery/gallery-grid";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Gallery | Wedding Memories",
+  title: "Gallery | Jamaica & Morgan",
   description:
     "Browse through our cherished wedding moments, organized by category.",
 };

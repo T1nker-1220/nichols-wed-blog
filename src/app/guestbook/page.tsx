@@ -3,7 +3,7 @@ import { GuestbookForm } from "@/components/guestbook/guestbook-form";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Guestbook | Wedding Memories",
+  title: "Guestbook | Jamaica & Morgan",
   description:
     "Leave your wishes and messages for Jamaica and Morgan on their special day.",
 };

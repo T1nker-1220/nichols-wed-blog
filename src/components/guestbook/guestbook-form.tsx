@@ -32,30 +32,55 @@ export function GuestbookForm() {
 
     try {
       const validatedData = guestbookSchema.parse(data);
+
+      // Add timeout for the fetch request
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+
       const response = await fetch("/api/guestbook", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(validatedData),
+        signal: controller.signal,
       });
 
-      const result = await response.json();
+      clearTimeout(timeoutId);
+
+      let result;
+      try {
+        result = await response.json();
+      } catch (jsonError) {
+        throw new Error("Invalid response from server");
+      }
 
       if (!response.ok) {
         throw new Error(result.error || "Failed to submit entry");
       }
 
       if (response.status === 201 && result) {
-        const userEntries = JSON.parse(
-          localStorage.getItem("userEntries") || "[]"
-        );
-        userEntries.push(result.id);
-        localStorage.setItem("userEntries", JSON.stringify(userEntries));
+        // Store entry in localStorage before showing success
+        try {
+          const userEntries = JSON.parse(
+            localStorage.getItem("userEntries") || "[]"
+          );
+          userEntries.push(result.id);
+          localStorage.setItem("userEntries", JSON.stringify(userEntries));
 
-        setError(null);
-        setSuccess(true);
-        formRef.current?.reset();
+          setError(null);
+          setSuccess(true);
+          formRef.current?.reset();
+
+          // Trigger a manual refresh of entries
+          window.dispatchEvent(new CustomEvent('guestbookEntryAdded'));
+        } catch (storageError) {
+          console.error("Failed to save to localStorage:", storageError);
+          // Continue with success state even if localStorage fails
+          setError(null);
+          setSuccess(true);
+          formRef.current?.reset();
+        }
       } else {
         throw new Error("Failed to submit entry");
       }
@@ -64,7 +89,11 @@ export function GuestbookForm() {
       if (err instanceof z.ZodError) {
         setError(err.errors[0].message);
       } else if (err instanceof Error) {
-        setError(err.message);
+        if (err.name === 'AbortError') {
+          setError("Request timed out. Your message may have been sent - please check the messages below.");
+        } else {
+          setError(err.message);
+        }
       } else {
         setError("Failed to submit entry. Please try again.");
       }

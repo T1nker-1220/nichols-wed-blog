@@ -43,33 +43,86 @@ export function GuestbookEntries() {
   useEffect(() => {
     const fetchEntries = async () => {
       try {
-        const response = await fetch("/api/guestbook");
-        if (!response.ok) throw new Error("Failed to fetch entries");
-        const data = await response.json();
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+        const response = await fetch("/api/guestbook", {
+          signal: controller.signal,
+          headers: {
+            'Cache-Control': 'no-cache',
+            'Pragma': 'no-cache'
+          }
+        });
+
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch entries");
+        }
+
+        let data;
+        try {
+          data = await response.json();
+        } catch (jsonError) {
+          throw new Error("Invalid response from server");
+        }
+
         setEntries(data);
+        setError(null); // Clear any existing errors on successful fetch
       } catch (err) {
-        setError(err instanceof Error ? err.message : "Failed to load entries");
+        // Don't show error for aborted requests (component unmounted)
+        if (err instanceof Error && err.name !== 'AbortError') {
+          setError(err instanceof Error ? err.message : "Failed to load entries");
+        }
       } finally {
         setLoading(false);
       }
     };
 
+    // Initial fetch
     fetchEntries();
-    const interval = setInterval(fetchEntries, 5000);
-    return () => clearInterval(interval);
+
+    // Set up polling with error backoff
+    let pollInterval = 5000; // Start with 5 seconds
+    const maxInterval = 30000; // Max 30 seconds
+
+    const interval = setInterval(() => {
+      fetchEntries().catch(() => {
+        // Increase polling interval on error, up to maxInterval
+        pollInterval = Math.min(pollInterval * 1.5, maxInterval);
+      });
+    }, pollInterval);
+
+    // Listen for new entries
+    const handleNewEntry = () => {
+      fetchEntries();
+    };
+    window.addEventListener('guestbookEntryAdded', handleNewEntry);
+
+    // Cleanup
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('guestbookEntryAdded', handleNewEntry);
+    };
   }, []);
 
   const handleDelete = async (id: string) => {
     if (!isUserEntry(id)) return;
 
     try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000);
+
       const response = await fetch(`/api/guestbook?id=${id}`, {
         method: "DELETE",
+        signal: controller.signal,
       });
 
-      const data = await response.text();
+      clearTimeout(timeoutId);
+
       let error;
       try {
+        const data = await response.text();
         error = JSON.parse(data);
       } catch {
         throw new Error("Invalid server response");
@@ -79,16 +132,19 @@ export function GuestbookEntries() {
         throw new Error(error.error || "Failed to delete message");
       }
 
-      // Only update UI if delete was successful
+      // Update UI and localStorage
       setEntries(entries.filter((entry) => entry.id !== id));
-
-      // Remove from localStorage
       const userEntries = getUserEntries().filter(
         (entryId: string) => entryId !== id
       );
       localStorage.setItem("userEntries", JSON.stringify(userEntries));
+      setError(null); // Clear any existing errors
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to delete message");
+      if (err instanceof Error && err.name === 'AbortError') {
+        setError("Request timed out. Please try again.");
+      } else {
+        setError(err instanceof Error ? err.message : "Failed to delete message");
+      }
     }
   };
 
@@ -97,17 +153,23 @@ export function GuestbookEntries() {
 
     if (editingEntry === id) {
       try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000);
+
         const response = await fetch(`/api/guestbook?id=${id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ message: editMessage }),
+          signal: controller.signal,
         });
 
-        const data = await response.text();
+        clearTimeout(timeoutId);
+
         let parsedData;
         try {
+          const data = await response.text();
           parsedData = JSON.parse(data);
         } catch {
           throw new Error("Invalid server response");
@@ -117,7 +179,7 @@ export function GuestbookEntries() {
           throw new Error(parsedData.error || "Failed to update message");
         }
 
-        // Update the entry in the list
+        // Update UI
         setEntries(
           entries.map((entry) =>
             entry.id === id ? { ...entry, message: editMessage } : entry
@@ -125,8 +187,13 @@ export function GuestbookEntries() {
         );
         setEditingEntry(null);
         setEditMessage("");
+        setError(null); // Clear any existing errors
       } catch (err) {
-        setError(err instanceof Error ? err.message : "Failed to update message");
+        if (err instanceof Error && err.name === 'AbortError') {
+          setError("Request timed out. Please try again.");
+        } else {
+          setError(err instanceof Error ? err.message : "Failed to update message");
+        }
       }
     } else {
       const entry = entries.find((e) => e.id === id);
