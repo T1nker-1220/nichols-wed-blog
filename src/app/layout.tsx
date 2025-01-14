@@ -60,6 +60,7 @@ export const metadata: Metadata = {
       {
         rel: 'mask-icon',
         url: '/images/logo.webp',
+        color: '#8B4513'
       },
     ],
   },
@@ -93,15 +94,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${playfair.variable} ${alexBrush.variable} ${dancingScript.variable} ${greatVibes.variable}`}
     >
-      <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" type="image/webp" href="/images/logo.webp" sizes="32x32" />
-        <link rel="apple-touch-icon" href="/images/logo.webp" sizes="180x180" />
-        <link rel="mask-icon" href="/images/logo.webp" color="#8B4513" />
-      </head>
-      <body className="flex min-h-screen flex-col bg-white font-serif antialiased">
+      <body suppressHydrationWarning className="flex min-h-screen flex-col bg-white font-serif antialiased">
         <PerformanceWrapper>
           {/* Texture overlay using CSS module */}
           <div className={styles.textureOverlay} />
