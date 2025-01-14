@@ -1,0 +1,26 @@
+{
+  "name": "Our Love Story | Jamaica & Morgan",
+  "short_name": "Nichols Wedding",
+  "description": "Celebrating the love story and wedding memories of Jamaica and Morgan.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#8B4513",
+  "icons": [
+    {
+      "src": "/images/logo.webp",
+      "sizes": "32x32",
+      "type": "image/webp"
+    },
+    {
+      "src": "/images/logo.webp",
+      "sizes": "180x180",
+      "type": "image/webp"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32",
+      "type": "image/x-icon"
+    }
+  ]
+}

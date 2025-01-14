@@ -45,7 +45,24 @@ const greatVibes = Great_Vibes({
 export const metadata: Metadata = {
   title: "Our Love Story | Jamaica & Morgan",
   description: "Celebrating the love story and wedding memories of Jamaica and Morgan.",
-  metadataBase: new URL('https://nicholsweddingmemories.vercel.app/'),
+  metadataBase: new URL('https://nicholsweddingmemories.vercel.app'),
+  manifest: '/manifest.json',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/images/logo.webp', type: 'image/webp', sizes: '32x32' }
+    ],
+    shortcut: ['/favicon.ico'],
+    apple: [
+      { url: '/images/logo.webp', type: 'image/webp', sizes: '180x180' }
+    ],
+    other: [
+      {
+        rel: 'mask-icon',
+        url: '/images/logo.webp',
+      },
+    ],
+  },
   openGraph: {
     title: "Our Love Story | Jamaica & Morgan",
     description: "Celebrating the love story and wedding memories of Jamaica and Morgan.",
@@ -53,26 +70,9 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/images/logo.webp',
-        width: 32,
-        height: 32,
+        width: 180,
+        height: 180,
         alt: 'Nichols Wedding Logo'
-      }
-    ],
-  },
-  icons: {
-    icon: [
-      {
-        url: '/images/logo.webp',
-        sizes: '32x32',
-        type: 'image/webp'
-      }
-    ],
-    shortcut: '/images/logo.webp',
-    apple: [
-      {
-        url: '/images/logo.webp',
-        sizes: '180x180',
-        type: 'image/webp'
       }
     ],
   },
@@ -96,9 +96,10 @@ export default function RootLayout({
       className={`${playfair.variable} ${alexBrush.variable} ${dancingScript.variable} ${greatVibes.variable}`}
     >
       <head>
-        <link rel="shortcut icon" type="image/webp" href="/images/logo.webp" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" type="image/webp" href="/images/logo.webp" sizes="32x32" />
         <link rel="apple-touch-icon" href="/images/logo.webp" sizes="180x180" />
+        <link rel="mask-icon" href="/images/logo.webp" color="#8B4513" />
       </head>
       <body className="flex min-h-screen flex-col bg-white font-serif antialiased">
         <PerformanceWrapper>
