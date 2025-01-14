@@ -1,3 +1,4 @@
+import { StoryImageCarousel } from "@/components/StoryImageCarousel";
 import { loveStory } from "@/data/story";
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
@@ -28,7 +29,7 @@ export default function StoryPage() {
       <section className="container relative mx-auto px-4 py-16">
         <div className="relative">
           {/* Timeline Line */}
-          <div className="absolute left-1/2 h-full w-0.5 -translate-x-1/2 transform bg-gradient-to-b from-[#8B4513] via-[#A0522D] to-[#CD853F] opacity-20" />
+          <div className="absolute left-1/2 h-full w-0.5 -translate-x-1/2 transform bg-gradient-to-b from-[#8B4513] via-[#A0522D] to-[#CD853F] opacity-20 md:block" />
 
           {/* Timeline Events */}
           <div className="relative space-y-12">
@@ -36,12 +37,12 @@ export default function StoryPage() {
               <div
                 key={event.id}
                 className={cn(
-                  "flex items-center gap-8",
-                  index % 2 === 0 ? "flex-row" : "flex-row-reverse"
+                  "flex flex-col gap-8",
+                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 )}
               >
                 {/* Content */}
-                <div className="w-1/2 space-y-4 rounded-2xl bg-gradient-to-br from-[#FDF1E7] to-white p-6 shadow-lg shadow-[#8B4513]/5 transition-transform duration-300 hover:scale-[1.02]">
+                <div className="w-full space-y-4 rounded-2xl bg-gradient-to-br from-[#FDF1E7] to-white p-6 shadow-lg shadow-[#8B4513]/5 transition-transform duration-300 hover:scale-[1.02] md:w-1/2">
                   <div className="space-y-2">
                     <span className="inline-block rounded-full bg-gradient-to-r from-[#8B4513] via-[#A0522D] to-[#CD853F] px-3 py-1 text-sm font-medium text-white shadow-sm">
                       {event.date}
@@ -51,16 +52,23 @@ export default function StoryPage() {
                     </h3>
                   </div>
                   <p className="text-[#8B4513]/80">{event.description}</p>
+
+                  {/* Image Carousel */}
+                  {event.images.length > 0 && (
+                    <div className="mt-6 overflow-hidden rounded-lg shadow-md">
+                      <StoryImageCarousel images={event.images} />
+                    </div>
+                  )}
                 </div>
 
                 {/* Timeline Point */}
-                <div className="relative flex h-8 w-8 shrink-0 items-center justify-center">
+                <div className="relative hidden h-8 w-8 shrink-0 items-center justify-center md:flex">
                   <div className="absolute h-4 w-4 rounded-full bg-gradient-to-r from-[#8B4513] to-[#A0522D]" />
                   <div className="absolute h-8 w-8 animate-ping rounded-full bg-[#8B4513]/20" />
                 </div>
 
                 {/* Spacer */}
-                <div className="w-1/2" />
+                <div className="hidden w-1/2 md:block" />
               </div>
             ))}
           </div>
