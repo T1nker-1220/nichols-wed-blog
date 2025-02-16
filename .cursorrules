@@ -1,223 +1,223 @@
 {
-"projectRules": {
-"general": {
-"documentation": {
-"updateOnChat": true,
-"mobileFirst": true,
-"nextjsStructure": "App Router with React Server Components",
-"responsiveBreakpoints": {
-"mobile": "max-width: 640px",
-"tablet": "641px-1024px",
-"desktop": "1025px+"
-},
-"namingConvention": "[Topic]\_docs.md"
-},
-"codeStructure": {
-"projectStructure": "AI-friendly with clear relationships",
-"comments": {
-"jsdoc": {
-"required": [
-"@ai-context",
-"@ai-dependencies",
-"@ai-relationships"
-]
-}
-},
-"principles": [
-"DRY",
-"Reusable Components"
-],
-"naming": {
-"components": "PascalCase",
-"functions": "camelCase",
-"variables": "camelCase",
-"constants": "UPPER_SNAKE_CASE"
-}
-}
-},
-"design": {
-"css": {
-"approach": "mobile-first",
-"units": [
-"rem",
-"em"
-],
-"touchElements": {
-"minSize": "44x44px"
-},
-"layout": [
-"CSS Grid",
-"Flexbox"
-],
-"accessibility": "WCAG 2.1 AA"
-}
-},
-"components": {
-"default": "server components",
-"structure": "atomic",
-"requirements": {
-"errorHandling": true,
-"loadingStates": true,
-"maxFunctionLines": 30
-}
-},
-"environment": {
-"terminal": "Windows Terminal",
-"packageManager": "pnpm",
-"conventions": "Windows-specific"
-},
-"documentation": {
-"typeDoc": {
-"fileRequirements": [
-"@module",
-"@packageDocumentation"
-],
-"componentRequirements": [
-"@component",
-"@props",
-"@returns"
-],
-"functionRequirements": [
-"@function",
-"@param",
-"@returns"
-]
-},
-"codeComments": {
-"format": "// [Purpose]: [Explanation]",
-"requirements": [
-"logic explanation",
-"business logic",
-"edge cases",
-"performance considerations"
-]
-}
-},
-"errorHandling": {
-"principles": [
-"preserve functionality",
-"backup before fixes",
-"document state",
-"targeted fixes",
-"verify features",
-"protect build process"
-],
-"workflow": {
-"steps": [
-"analyze context",
-"map impact",
-"create strategy",
-"document state",
-"implement changes",
-"verify functionality",
-"update docs",
-"validate build",
-"confirm stability",
-"maintain rollback"
-]
-}
-},
-"designSystem": {
-"requirements": [
-"theme tokens",
-"spacing system",
-"typography system",
-"color system",
-"responsive design",
-"dark mode",
-"component patterns"
-],
-"components": {
-"creation": [
-"extend base components",
-"use theme colors",
-"follow typography",
-"follow spacing",
-"implement variants"
-],
-"themeIntegration": [
-"theme provider wrapper",
-"proper hooks usage",
-"token consistency",
-"override protocols"
-]
-}
-},
-"phaseBasedRules": {
-"organization": "PHASE_X_docs.md",
-"updates": [
-"update existing docs",
-"group related features",
-"maintain organization",
-"use navigation aids"
-],
-"sections": {
-"required": [
-"Feature overview",
-"Technical details",
-"Configuration",
-"Usage examples",
-"Troubleshooting"
-],
-"optional": [
-"Performance considerations",
-"Security notes",
-"Future improvements"
-]
-}
-},
-"versionTracking": {
-"format": "## [Feature Name] - [Date]",
-"required": [
-"version number",
-"change description",
-"breaking changes",
-"migration steps"
-]
-},
-"changeTracking": {
-"fileModification": {
-"newFiles": [
-"document purpose",
-"explain addition",
-"list dependencies",
-"update structure"
-],
-"modifiedFiles": [
-"track changes",
-"document impact",
-"update docs",
-"maintain history"
-],
-"deletedFiles": [
-"document removal reason",
-"update docs",
-"remove from structure",
-"note dependencies"
-]
-},
-"logging": {
-"required": [
-"date and time",
-"modification type",
-"purpose",
-"impact",
-"feature grouping",
-"chronological order",
-"documentation links",
-"version info"
-]
-}
-},
-"validation": {
-"requirements": [
-"documented changes",
-"accurate status",
-"current diagrams",
-"correct features",
-"tracked errors",
-"validated relationships"
-]
-}
-}
+  "projectRules": {
+    "general": {
+      "documentation": {
+        "updateOnChat": true,
+        "mobileFirst": true,
+        "nextjsStructure": "App Router with React Server Components",
+        "responsiveBreakpoints": {
+          "mobile": "max-width: 640px",
+          "tablet": "641px-1024px",
+          "desktop": "1025px+"
+        },
+        "namingConvention": "[Topic]-docs.md"
+      },
+      "codeStructure": {
+        "projectStructure": "AI-friendly with clear relationships",
+        "comments": {
+          "jsdoc": {
+            "required": [
+              "@ai-context",
+              "@ai-dependencies",
+              "@ai-relationships"
+            ]
+          }
+        },
+        "principles": [
+          "DRY",
+          "Reusable Components"
+        ],
+        "naming": {
+          "components": "PascalCase",
+          "functions": "camelCase",
+          "variables": "camelCase",
+          "constants": "UPPER_SNAKE_CASE"
+        }
+      }
+    },
+    "design": {
+      "css": {
+        "approach": "mobile-first",
+        "units": [
+          "rem",
+          "em"
+        ],
+        "touchElements": {
+          "minSize": "44x44px"
+        },
+        "layout": [
+          "CSS Grid",
+          "Flexbox"
+        ],
+        "accessibility": "WCAG 2.1 AA"
+      }
+    },
+    "components": {
+      "default": "server components",
+      "structure": "atomic",
+      "requirements": {
+        "errorHandling": true,
+        "loadingStates": true,
+        "maxFunctionLines": 30
+      }
+    },
+    "environment": {
+      "terminal": "Windows Terminal",
+      "packageManager": "pnpm",
+      "conventions": "Windows-specific"
+    },
+    "documentation": {
+      "typeDoc": {
+        "fileRequirements": [
+          "@module",
+          "@packageDocumentation"
+        ],
+        "componentRequirements": [
+          "@component",
+          "@props",
+          "@returns"
+        ],
+        "functionRequirements": [
+          "@function",
+          "@param",
+          "@returns"
+        ]
+      },
+      "codeComments": {
+        "format": "// [Purpose]: [Explanation]",
+        "requirements": [
+          "logic explanation",
+          "business logic",
+          "edge cases",
+          "performance considerations"
+        ]
+      }
+    },
+    "errorHandling": {
+      "principles": [
+        "preserve functionality",
+        "backup before fixes",
+        "document state",
+        "targeted fixes",
+        "verify features",
+        "protect build process"
+      ],
+      "workflow": {
+        "steps": [
+          "analyze context",
+          "map impact",
+          "create strategy",
+          "document state",
+          "implement changes",
+          "verify functionality",
+          "update docs",
+          "validate build",
+          "confirm stability",
+          "maintain rollback"
+        ]
+      }
+    },
+    "designSystem": {
+      "requirements": [
+        "theme tokens",
+        "spacing system",
+        "typography system",
+        "color system",
+        "responsive design",
+        "dark mode",
+        "component patterns"
+      ],
+      "components": {
+        "creation": [
+          "extend base components",
+          "use theme colors",
+          "follow typography",
+          "follow spacing",
+          "implement variants"
+        ],
+        "themeIntegration": [
+          "theme provider wrapper",
+          "proper hooks usage",
+          "token consistency",
+          "override protocols"
+        ]
+      }
+    },
+    "phaseBasedRules": {
+      "organization": "PHASE_X_docs.md",
+      "updates": [
+        "update existing docs",
+        "group related features",
+        "maintain organization",
+        "use navigation aids"
+      ],
+      "sections": {
+        "required": [
+          "Feature overview",
+          "Technical details",
+          "Configuration",
+          "Usage examples",
+          "Troubleshooting"
+        ],
+        "optional": [
+          "Performance considerations",
+          "Security notes",
+          "Future improvements"
+        ]
+      }
+    },
+    "versionTracking": {
+      "format": "## [Feature Name] - [Date]",
+      "required": [
+        "version number",
+        "change description",
+        "breaking changes",
+        "migration steps"
+      ]
+    },
+    "changeTracking": {
+      "fileModification": {
+        "newFiles": [
+          "document purpose",
+          "explain addition",
+          "list dependencies",
+          "update structure"
+        ],
+        "modifiedFiles": [
+          "track changes",
+          "document impact",
+          "update docs",
+          "maintain history"
+        ],
+        "deletedFiles": [
+          "document removal reason",
+          "update docs",
+          "remove from structure",
+          "note dependencies"
+        ]
+      },
+      "logging": {
+        "required": [
+          "date and time",
+          "modification type",
+          "purpose",
+          "impact",
+          "feature grouping",
+          "chronological order",
+          "documentation links",
+          "version info"
+        ]
+      }
+    },
+    "validation": {
+      "requirements": [
+        "documented changes",
+        "accurate status",
+        "current diagrams",
+        "correct features",
+        "tracked errors",
+        "validated relationships"
+      ]
+    }
+  }
 }
